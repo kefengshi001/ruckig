@@ -21,6 +21,17 @@
 namespace ruckig {
 
 //! Main interface for the Ruckig algorithm
+/*
+template<class, size_t> class这是一个整体，它描述了 CustomVector这个参数所接受的“模板”必须长什么样子。
+它声明了 CustomVector必须是一个类模板，并且这个类模板需要接受两个模板参数：
+1.一个类型参数（用 class或 typename声明）。
+2.一个非类型参数，具体是 size_t类型的。
+CustomVector是这个模板参数的名称。在 Ruckig类的内部，可以像使用一个普通的类模板一样使用 CustomVector
+我（Ruckig类）需要一个容器来存放数据，但我不想固定死用哪种容器（比如 std::vector或 std::array）。
+我只规定这个容器必须能通过 Container<ElementType, Size>这样的形式来创建。具体你用哪个容器，由使用我的人来决定。
+
+*/
+
 template<size_t DOFs = 0, template<class, size_t> class CustomVector = StandardVector, bool throw_error = false>
 class Ruckig {
     //! Current input, only for comparison for recalculation
