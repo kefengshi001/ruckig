@@ -42,6 +42,7 @@ class InputParameter {
         return v0 + (a0 * a0) / (2 * j);
     }
 
+    // 初始化参数
     void initialize() {
         for (size_t dof = 0; dof < degrees_of_freedom; ++dof) {
             current_velocity[dof] = 0.0;
@@ -53,7 +54,7 @@ class InputParameter {
             enabled[dof] = true;
         }
     }
-
+    // 调整参数维度
     void resize(size_t dofs) {
         current_position.resize(dofs);
         current_velocity.resize(dofs);
@@ -151,6 +152,7 @@ public:
 #endif
 
     //! Validate the input for trajectory calculation
+    // 输入参数校验
     template<bool throw_validation_error = true>
     bool validate(bool check_current_state_within_limits = false, bool check_target_state_within_limits = true) const {
         for (size_t dof = 0; dof < degrees_of_freedom; ++dof) {
